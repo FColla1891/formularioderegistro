@@ -7,30 +7,29 @@ function showAlertError() {
 }
 
 
-document.addEventListener("DOMContentLoaded", function () {
-    const checkbox = document.getElementById("terminos");
-    const regBtn = document.getElementById("regBtn");
-    const errorMensaje = document.getElementById("errorMensaje");
-  
-    regBtn.addEventListener("click", function () {
-      if (!checkbox.checked) {
-        alert("Debes aceptar los términos y condiciones");
-      } else {
-      }
-    });
-  });
-
-  
 const contraseña = document.getElementById('password1').value;
 const nuevacontraseña = document.getElementById('password2').value;
 
-function checkPassword(){
-    return compararContraseña();
+const checkbox = document.getElementById("terminos");
+const regBtn = document.getElementById("regBtn");
+const errorMensaje = document.getElementById("errorMensaje");
+
+
+
+function compararContraseña(){
+    if (contraseña === nuevacontraseña){
+        return showAlertSuccess();
+    } else {
+        return showAlertError();
+    }
 }
 
-function compararContraseña(contraseña, nuevacontraseña){
-    if (contraseña === nuevacontraseña){
-        return showAlertSuccess;
-    }else 
-        return showAlertError;
-}
+document.addEventListener("DOMContentLoaded", function () {  
+    regBtn.addEventListener("click", function () {
+      if (!checkbox.checked) {
+        alert("Debes aceptar los términos y condiciones");
+      }
+      compararContraseña();
+    });
+  });
+
