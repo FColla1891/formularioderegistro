@@ -66,5 +66,7 @@ const errorMensaje = document.getElementById("errorMensaje");
 
 
 function compararContraseña(){
-    return contraseña === nuevacontraseña;
+    let contraseña = document.getElementById('password1').value;
+    let nuevaContraseña = document.getElementById('password2').value;
+    return contraseña === nuevaContraseña;
 }
