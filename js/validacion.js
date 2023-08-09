@@ -6,18 +6,13 @@ function showAlertError() {
     document.getElementById("alert-danger").classList.add("show");
 }
 
-const contraseña = document.getElementById('password1').value;
-const nuevacontraseña = document.getElementById('password2').value;
 
-function checkPassword(){
-    return compararContraseña();
-}
+function compararContraseña(){
+    let contraseña = document.getElementById('password1').value;
+    let nuevacontraseña = document.getElementById('password2').value;
 
-function compararContraseña(contraseña, nuevacontraseña){
     if (contraseña === nuevacontraseña){
-        return showAlertSuccess;
+        return true;
     }else 
-        return showAlertError;
+        return false;
 }
-
-console.log(checkPassword());
