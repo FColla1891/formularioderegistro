@@ -24,9 +24,10 @@ function showAlertError() {
 function compararContraseña() {
     const contraseña = document.getElementById('password1').value;
     const confirmacionContraseña = document.getElementById('password2').value;
+    const longitudContraseña = contraseña.length;
     
-    if (contraseña === "" || confirmacionContraseña === "") {
-        errorMensajeContraseña.innerHTML = "Recuerda llenar los campos de contraseña."
+    if (longitudContraseña < 6) {
+        errorMensajeContraseña.innerHTML = "La contraseña debe tener al menos 6 caracteres."
     }
     return contraseña === confirmacionContraseña;
   }
