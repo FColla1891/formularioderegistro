@@ -19,7 +19,6 @@ function showAlertSuccess() {
 function showAlertError() {
     document.getElementById("alert-danger").classList.add("show");
 }
-
 //Verifica y compara constraseñas retornando valor booleano
 function compararContraseña() {
     const contraseña = document.getElementById('password1').value;
