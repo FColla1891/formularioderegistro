@@ -21,13 +21,9 @@ function showAlertError() {
 }
 //Verifica y compara constraseñas retornando valor booleano
 function compararContraseña() {
-    const contraseña = document.getElementById('password1').value;
-    const confirmacionContraseña = document.getElementById('password2').value;
-    const longitudContraseña = contraseña.length;
-    
-    if (longitudContraseña < 6) {
-        errorMensajeContraseña.innerHTML = "La contraseña debe tener al menos 6 caracteres."
-    }
+    let contraseña = document.getElementById('password1').value;
+    let confirmacionContraseña = document.getElementById('password2').value;
+
     return contraseña === confirmacionContraseña;
   }
 
@@ -42,6 +38,32 @@ document.addEventListener("DOMContentLoaded", function () {
         errorMensajeContraseña.innerHTML = "Las contraseñas no coinciden.";
         showAlertError();
       }
+      if (!checkCampos()){ //Si uno o mas campos no tienen contenido enviara la alerta de error.
+        showAlertError();
+      }
+      if (!longitudContraseña()){
+        errorMensajeContraseña.innerHTML = "La contraseña debe tener al menos 6 caracteres."
+      }
+      if (checkbox.checked && compararContraseña() && checkCampos() && longitudContraseña()){
+        showAlertSuccess();
+      }
     });
   });
 
+//Función que verifica si los campos tienen contenido.
+function checkCampos(){
+    let nombre = document.getElementById('nombre').value;
+    let apellido = document.getElementById('apellido').value;
+    let email = document.getElementById('email').value;
+    let pass1 = document.getElementById('password1').value;
+    let pass2 = document.getElementById('password2').value;
+
+    return (nombre!="" && apellido!="" && email!="" && pass1!="" && pass2!="");
+} 
+
+//Función que verifica la longitud de la contraseña.
+function longitudContraseña(){
+  let contraseña = document.getElementById('password1').value;
+  let longitudContraseña = contraseña.length;
+  return (longitudContraseña >= 6);
+}
